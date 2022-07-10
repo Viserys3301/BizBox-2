@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пациент</title>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{update_patient}" th:method="post" th:object="${patient}">
+        <input type="hidden" th:field="*{primaryKey}">
+        <title>Имя</title>
+        <input type="text" th:field="*{name}" placeholder="Введите имя">
+        <hr>
+        <title>Суииа</title>
+        <input type="text" th:field="*{accumulatedAmount}" placeholder="Введите сумму">
+        <hr>
+        <button id="btn1" type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>
+</body>
+</html>

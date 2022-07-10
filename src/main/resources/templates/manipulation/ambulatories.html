@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Амбулатории</title>
+</head>
+<body>
+    <div th:each="ambulatory : ${ambulatories}">
+        <h3 th:text="${ambulatory.renprice}"></h3>
+    </div>
+</body>
+</html>

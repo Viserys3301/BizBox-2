@@ -1,0 +1,108 @@
+###GET PATIENT
+###GET BY ID
+
+GET http://localhost:8080/api/v1/bonus_system/patient/1/id
+
+###GET ALL
+
+GET http://localhost:8080/api/v1/bonus_system/patient/list
+
+###ADD
+
+POST http://localhost:8080/api/v1/bonus_system/patient
+Content-Type: application/json
+
+{
+  "name": "Viserys",
+  "bizBoxPatientId": 228,
+  "accumulatedAmount": 50000,
+  "isActive": true,
+  "discounts": {
+    "id": 2
+  },
+  "rate": 3
+}
+
+###UPDATE
+
+PUT http://localhost:8080/api/v1/bonus_system/patient
+Content-Type: application/json
+
+{
+  "id": 2,
+  "name": "Vi",
+  "bizBoxPatientId": 228,
+  "accumulatedAmount": 50000,
+  "isActive": true,
+  "discounts": {
+    "id": 1
+  },
+  "rate": 3
+}
+
+###DISCOUNT
+###GET BY ID
+
+GET http://localhost:8080/api/v1/bonus_system/discount/1/id
+
+###
+
+
+GET http://localhost:8080/api/v1/bonus_system/discount/list
+
+###
+
+POST  http://localhost:8080/api/v1/bonus_system/discount
+Content-Type: application/json
+
+{
+  "title": "SILVER",
+  "startBonusSum": 50000.00,
+  "rate": 3,
+  "isActive": true
+}
+
+###
+
+PUT http://localhost:8080/api/v1/bonus_system/discount
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "GOLD",
+  "startBonusSum": 50000.00,
+  "rate": 3,
+  "isActive": true
+}
+
+###
+
+DELETE http://localhost:8080/api/v1/bonus_system/discount/1/id
+
+###TRANSACTION
+###GET BY ID
+
+GET http://localhost:8080/api/v1/bonus_system/transaction/4/id
+
+###GET ALL
+
+GET http://localhost:8080/api/v1/bonus_system/transaction/list
+
+###ADD
+
+POST http://localhost:8080/api/v1/bonus_system/transaction
+Content-Type:application/json
+
+{
+  "patients":
+  {
+    "id": 8
+  },
+  "bizBoxTransactionId": 225,
+  "bizBoxInnerTransactionId": 321,
+  "discountsRate": 5,
+  "completed": true,
+  "canceled": false
+}
+
+###
