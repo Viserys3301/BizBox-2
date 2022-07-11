@@ -22,5 +22,10 @@ public class DatacenterService {
         return datacenterRepository.findTop31ByOrderByFullname();
     }
 
+    String findClientNameById(Long id){
+        DatacenterPatient patient = datacenterRepository.findById(id).get();
+        return patient.getFullname();
+    }
+
 
 }

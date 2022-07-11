@@ -42,7 +42,7 @@ public class psPatitemService {
         ambulatory.clear();
         ambulatory.addAll(set);
 
-        //TODO На основе списка ambulatory содать амбулатории
+        //TODO На основе списка ambulatory создать амбулатории
 
         return null;
     }

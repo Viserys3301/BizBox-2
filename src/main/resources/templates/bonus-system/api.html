@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        .btn{
+            font-size: 20px;
+        }
+        .headerText{
+            text-align: center;
+        }
+    </style>
+    <style th:insert="~{fragments/menu :: menu_css}"></style>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: menu}"></div>
+
+<h1 style="color:	#8C00FF;" >СКИДКИ</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" style="color: #ff8c00">Поиск скидки по ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" >
+            GET http://localhost:8080/api/v1/bonus_system/discount/1/id
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" style="color: #ff8c00">Список всех скидок</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" >
+            GET http://localhost:8080/api/v1/bonus_system/discount/list
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" style="color: #ff8c00">Добавить новую скидку</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" >
+            POST  http://localhost:8080/api/v1/bonus_system/discount
+        </th>
+        <th>
+            Content-Type: application/json
+            {
+            "title": "SILVER",
+            "startBonusSum": 50000.00,
+            "rate": 3,
+            "isActive": true
+            }
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" style="color: #ff8c00">Изменить скидку по ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" >
+            PUT http://localhost:8080/api/v1/bonus_system/discount
+        </th>
+        <th>
+            Content-Type: application/json
+            {
+            "id": 1,
+            "title": "GOLD",
+            "startBonusSum": 50000.00,
+            "rate": 3,
+            "isActive": true
+            }
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+<h1 style="color:	#8C00FF;" >ПАЦИЕНТЫ</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" style="color: #ff8c00">Поиск пациента по ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" >
+            GET http://localhost:8080/api/v1/bonus_system/patient/1/id
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" style="color: #ff8c00">Список всех пациентов</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" >
+            GET http://localhost:8080/api/v1/bonus_system/patient/list
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" style="color: #ff8c00">Добавить нового пациента</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" >
+            POST http://localhost:8080/api/v1/bonus_system/patient
+        </th>
+        <th>
+            Content-Type: application/json
+            {
+            "name": "Viserys",
+            "bizBoxPatientId": 228,
+            "accumulatedAmount": 50000,
+            "isActive": true,
+            "discounts": {
+            "id": 2
+            },
+            "rate": 3
+            }
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+
+<table class="table">
+    <thead>
+    <tr>
+<th scope="col" style="color: #ff8c00">Изменить пациента по ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <th scope="row" >
+        PUT http://localhost:8080/api/v1/bonus_system/patient
+    </th>
+    <th>
+        Content-Type: application/json
+        {
+        "id": 2,
+        "name": "Vi",
+        "bizBoxPatientId": 228,
+        "accumulatedAmount": 50000,
+        "isActive": true,
+        "discounts": {
+        "id": 1
+        },
+        "rate": 3
+        }
+    </th>
+</tr>
+</tbody>
+</table>
+
+<h1 style="color:	#8C00FF;" >ТРАНЗАКЦИИ</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" style="color: #ff8c00">Поиск транзакции по ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" >
+            GET http://localhost:8080/api/v1/bonus_system/transaction/1/id
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" style="color: #ff8c00">Список всех транзакций</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" >
+            GET http://localhost:8080/api/v1/bonus_system/transaction/list
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col" style="color: #ff8c00">Добавить новую транзакцию</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" >
+            POST http://localhost:8080/api/v1/bonus_system/transaction
+        </th>
+        <th>
+            Content-Type:application/json
+            {
+            "patients":
+            {
+            "id": 8
+            },
+            "bizBoxTransactionId": 225,
+            "bizBoxInnerTransactionId": 321,
+            "discountsRate": 5,
+            "completed": true,
+            "canceled": false
+            }
+        </th>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DatacenterPatientRepository extends JpaRepository<DatacenterPatient,Integer> {
+public interface DatacenterPatientRepository extends JpaRepository<DatacenterPatient,Long> {
     //DatacenterPatient findFirstByOrderByFullnameAsc();
     List<DatacenterPatient> findTop31ByOrderByFullname();
 }
