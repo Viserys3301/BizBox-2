@@ -76,7 +76,7 @@
 <!--        <th th:if="${patient.prtelno != null}" scope="row"  th:text="${patient.prtelno}">Не известно</th>-->
 <!--        <th th:if="${patient.prtelno == null}" scope="row"  th:text="Не известно"></th>-->
         <td>
-            <a class="btn btn-warning" th:href="@{/patient/ambulaturies/{id} (id = ${patient.primaryKey})}" role="button">Амбулатории</a>
+            <a class="btn btn-warning" th:href="@{/patient/ambulatories/{id} (id = ${patient.primaryKey})}" role="button">Амбулатории</a>
             <a class="btn btn-secondary" th:href="@{/patient/{id} (id = ${patient.primaryKey})}" role="button">Изменить</a>
         </td>
     </tr>

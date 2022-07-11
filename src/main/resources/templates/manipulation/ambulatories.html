@@ -3,10 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Амбулатории</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <style>
+        .btn{
+            font-size: 20px;
+        }
+        .headerText{
+            text-align: center;
+        }
+    </style>
+    <style th:insert="~{fragments/menu :: menu_css}"></style>
 </head>
 <body>
-    <div th:each="ambulatory : ${ambulatories}">
-        <h3 th:text="${ambulatory.renprice}"></h3>
-    </div>
+<div th:insert="~{fragments/menu :: menu}"></div>
+
+<table class="table">
+    <tr  th:each="ambulatory : ${ambulatories}">
+        <td  th:text="${ambulatory.key}">keyvalue</td>
+        <table class="table">
+            <tr th:each="anews : ${ambulatory.value}">
+                <td th:text="${anews.renprice}">Some name</td>
+            </tr>
+        </table>
+    </tr>
+</table>
 </body>
 </html>

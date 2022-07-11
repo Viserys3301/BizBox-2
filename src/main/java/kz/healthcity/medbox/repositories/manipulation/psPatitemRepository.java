@@ -10,4 +10,5 @@ import java.util.List;
 public interface psPatitemRepository extends JpaRepository<psPatitem,Integer> {
 
     List<psPatitem> findByPatientId(Integer patientId);
+    List<psPatitem> findByInnerId(Long innerId);
 }

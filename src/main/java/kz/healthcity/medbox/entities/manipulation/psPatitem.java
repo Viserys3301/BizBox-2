@@ -24,7 +24,7 @@ public class psPatitem {
     private Byte[] tstamp;
 
     @Column(name = "FK_TRXNO")
-    private Long FK_TRXNO;
+    private Long innerId;
 
     @Column(name = "FK_TRXNO_PHIC")
     private Long FK_TRXNO_PHIC;

@@ -27,23 +27,18 @@ public class psPatitemService {
         patitemRepository.save(patitem);
     }
 
-    public List<psPatitem> findByPatientId(Integer patientId){
-        Map<Integer, ArrayList<psPatitem>> ambulatories = new HashMap<>();
-        ArrayList<Integer> ambulatory = new ArrayList<>();
+    public Map<Integer,List<psPatitem>> findByPatientId(Integer patientId){
+        Map<Integer, List<psPatitem>> ambulatories = new HashMap<>();
+
+
         List<psPatitem> list = patitemRepository.findByPatientId(patientId);
 
-        Integer key = null;
-
         for (psPatitem p:list) {
-            ambulatory.add(p.getFK_psPatRegisters());
+            ambulatories.put(p.getFK_psPatRegisters(),patitemRepository.findByInnerId(p.getInnerId()));
         }
 
-        Set<Integer> set = new HashSet<>(ambulatory);
-        ambulatory.clear();
-        ambulatory.addAll(set);
+        //TODO ДОДУШИТЬ ПОМЕНЯТЬ СУЩНОСТЬ НА PS PAT REG
 
-        //TODO На основе списка ambulatory создать амбулатории
-
-        return null;
+        return ambulatories;
     }
 }

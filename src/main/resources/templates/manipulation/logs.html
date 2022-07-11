@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Логи</title>
+    <style>
+        .btn{
+            font-size: 20px;
+        }
+        .headerText{
+            text-align: center;
+        }
+    </style>
+    <style th:insert="~{fragments/menu :: menu_css}"></style>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: menu}"></div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Регистратор</th>
+        <th scope="col">Действие</th>
+        <th scope="col">Дата</th>
+        <th scope="col">ID Амбулатории</th>
+        <th scope="col">ID случая</th>
+        <th scope="col">ID старый док</th>
+        <th scope="col">ID ноый док</th>
+        <th scope="col">ID старая дата</th>
+        <th scope="col">ID новая дата</th>
+        <th scope="col">Платёж</th>
+        <th scope="col">Пользователь</th>
+        <th scope="col">Первый пациент</th>
+        <th scope="col">Второй пациент</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="log : ${logs}">
+        <th scope="row" th:text="${log.ID}"></th>
+        <th scope="row"  th:text="${log.RegID}"></th>
+        <th scope="row"  th:text="${log.Data}"></th>
+        <th scope="row"  th:text="${log.Date}"></th>
+        <th scope="row"  th:text="${log.TranID_FK_TRXNO}"></th>
+        <th scope="row"  th:text="${log.TranID_PK_psPatledgers}"></th>
+        <th scope="row"  th:text="${log.OldDocId}"></th>
+        <th scope="row"  th:text="${log.newDocID}"></th>
+        <th scope="row"  th:text="${log.OldDate}"></th>
+        <th scope="row"  th:text="${log.NewDate}"></th>
+        <th scope="row"  th:text="${log.Payment}"></th>
+        <th scope="row"  th:text="${log.UserDb}"></th>
+        <th scope="row"  th:text="${log.FirstPatId}"></th>
+        <th scope="row"  th:text="${log.SecondPatId}"></th>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
