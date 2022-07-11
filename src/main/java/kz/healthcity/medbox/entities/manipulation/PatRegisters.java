@@ -13,12 +13,12 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Entity
 @Table(name = "psPatRegisters")
-public class psPatRegisters {
+public class PatRegisters {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_psPatRegisters")
-    private Integer PK_psPatRegisters;
+    private Integer primaryKey;
 
     @Column(name = "tstamp")
     private Byte[] tstamp;
@@ -30,7 +30,7 @@ public class psPatRegisters {
     private Short FK_mscBranches;
 
     @Column(name = "FK_emdPatients")
-    private Integer FK_emdPatients;
+    private Integer patientId;
 
     @Column(name = "FK_mscPriceGroups")
     private Integer FK_mscPriceGroups;

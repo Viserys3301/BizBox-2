@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface psPatLedgersRepository extends JpaRepository<psPatLedgers,Long>{
-
+        List<psPatLedgers> findByPatRegisters(Integer patRegisters);
 }

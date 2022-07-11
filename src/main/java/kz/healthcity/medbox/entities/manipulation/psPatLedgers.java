@@ -29,13 +29,13 @@ public class psPatLedgers {
     private Short FK_mscBranches;
 
     @Column(name = "FK_psPatRegisters")
-    private Integer FK_psPatRegisters;
+    private Integer patRegisters;
 
     @Column(name = "FK_emdPatients")
     private Integer FK_emdPatients;
 
     @Column(name = "FK_TRXNO")
-    private Long FK_TRXNO;
+    private Long innerId;
 
     @Column(name = "FK_mscBillTemplate")
     private Long FK_mscBillTemplate;

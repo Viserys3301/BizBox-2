@@ -41,4 +41,8 @@ public class psPatitemService {
 
         return ambulatories;
     }
+
+    public List<psPatitem> findByInnerId(Long id) {
+      return   patitemRepository.findByInnerId(id);
+    }
 }

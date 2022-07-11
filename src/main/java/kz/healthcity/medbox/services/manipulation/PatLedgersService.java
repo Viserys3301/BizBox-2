@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class psPatLedgersService {
+public class PatLedgersService {
     psPatLedgersRepository patLedgersRepository;
 
 
@@ -36,5 +36,9 @@ public class psPatLedgersService {
 
     public List<psPatLedgers> findAll() {
         return patLedgersRepository.findAll();
+    }
+
+    public List<psPatLedgers> findByPatRegisters(Integer patRegisters){
+        return patLedgersRepository.findByPatRegisters(patRegisters);
     }
 }

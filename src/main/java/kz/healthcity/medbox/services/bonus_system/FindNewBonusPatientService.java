@@ -1,24 +1,20 @@
 package kz.healthcity.medbox.services.bonus_system;
 
 import kz.healthcity.medbox.entities.manipulation.psPatLedgers;
-import kz.healthcity.medbox.services.manipulation.psPatLedgersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class FindNewBonusPatientService {
 
-    psPatLedgersService PatLedgersService;
+    kz.healthcity.medbox.services.manipulation.PatLedgersService PatLedgersService;
 
     @Autowired
-    public void setPatLedgersService(psPatLedgersService patLedgersService) {
+    public void setPatLedgersService(kz.healthcity.medbox.services.manipulation.PatLedgersService patLedgersService) {
         PatLedgersService = patLedgersService;
     }
 

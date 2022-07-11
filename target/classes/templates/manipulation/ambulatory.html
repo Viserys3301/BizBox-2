@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Амбулатории</title>
+    <title>Ambulatory</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <style>
         .btn{
@@ -27,11 +27,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr  th:each="ambulatory : ${ambulatories}">
-        <th scope="row"  th:text="${ambulatory.primaryKey}"></th>
-        <th scope="row"  th:text="${ambulatory.registrydate}"></th>
+    <tr th:each="ambulatory : ${ambulatories}" th:if="${ambulatory.billtrancode == 'HC'}">
+        <th  scope="row"  th:text="${ambulatory.docdate}"></th>
         <td>
-            <a class="btn btn-secondary" th:href="@{/patient/ambulatory/{id} (id = ${ambulatory.primaryKey})}" role="button">Изменить</a>
+            <a class="btn btn-secondary" th:href="@{/patient/items/{id} (id = ${ambulatory.innerId})}" role="button">Изменить</a>
         </td>
     </tr>
 

@@ -17,7 +17,7 @@ public class psPatinv {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PK_TRXNO")
-    private Long PK_TRXNO;
+    private Long primaryKey;
 
     @Column(name = "tstamp")
     private Byte[] tstamp;
