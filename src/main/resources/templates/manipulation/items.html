@@ -39,8 +39,10 @@
         <th scope="row"  th:text="${item.itemName}"></th>
         <th scope="row"  th:text="${item.renprice}"></th>
         <td>
-            <a class="btn btn-secondary" th:href="@{/patient/items/{id} (id = ${item.primaryKey})}" role="button"><i class="fa-solid fa-elevator"></i></a>
-            <a class="btn btn-secondary" th:href="@{/patient/items/{id} (id = ${item.primaryKey})}" role="button"><i class="fa-solid fa-dollar-sign"></i></a>
+
+            <a class="btn btn-secondary" th:href="@{/update_price/{id} (id = ${item.innerId})}" role="button"><i class="fa-solid fa-elevator"></i></a>
+
+            <a class="btn btn-secondary" th:href="@{/patient/update_price/{id} (id = ${item.innerId})}" role="button"><i class="fa-solid fa-dollar-sign"></i></a>
         </td>
     </tr>
     </tbody>

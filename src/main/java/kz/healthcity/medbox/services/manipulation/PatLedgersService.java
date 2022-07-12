@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.NotActiveException;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -50,5 +51,10 @@ public class PatLedgersService {
 
 
         return list;
+    }
+
+
+    public void update(Long innerId){
+        patLedgersRepository.update(innerId);
     }
 }

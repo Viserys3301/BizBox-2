@@ -6,25 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Service
 public class psPatinvService {
-    psPatinvRepository PatinvRepository;
+    psPatinvRepository patinvRepository;
 
     @Autowired
     public void setPatinvRepository(psPatinvRepository patinvRepository) {
-        PatinvRepository = patinvRepository;
+        this.patinvRepository = patinvRepository;
     }
-
 
     public Optional<psPatinv> findById(Long id){
-        return PatinvRepository.findById(id);
-    }
-    @Transactional
-    public void update(psPatinv patinv){
-        PatinvRepository.save(patinv);
+        return patinvRepository.findById(id);
     }
 
+
+
+    public void update(Long innerId){
+      patinvRepository.update(innerId);
+    }
 
 }

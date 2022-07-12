@@ -4,14 +4,12 @@ import kz.healthcity.medbox.repositories.manipulation.PatRegistersRepository;
 import kz.healthcity.medbox.repositories.manipulation.psPatinvRepository;
 import kz.healthcity.medbox.services.manipulation.DatacenterService;
 import kz.healthcity.medbox.services.manipulation.PatLedgersService;
+import kz.healthcity.medbox.services.manipulation.psPatinvService;
 import kz.healthcity.medbox.services.manipulation.psPatitemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/patient")
@@ -22,6 +20,12 @@ public class PatientController {
     PatRegistersRepository registersRepository;
     PatLedgersService patLedgersService;
     psPatinvRepository patinvRepository;
+    psPatinvService patinvService;
+
+    @Autowired
+    public void setPatinvService(psPatinvService patinvService) {
+        this.patinvService = patinvService;
+    }
 
     @Autowired
     public void setPatinvRepository(psPatinvRepository patinvRepository) {
@@ -96,5 +100,13 @@ public class PatientController {
     public String getItems(@PathVariable(value = "id") Long id,Model model){
         model.addAttribute("items",patitemService.findByInnerId(id));
         return "manipulation/items";
+    }
+
+    @GetMapping("/update_price/{id}")
+    public String updatePrice(@PathVariable(value = "id") Long innerId){
+        patitemService.update(innerId);
+        patinvService.update(innerId);
+        patLedgersService.update(innerId);
+        return "redirect:/patient/items/" + innerId;
     }
 }
