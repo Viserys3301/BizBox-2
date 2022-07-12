@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/corp_system")
@@ -32,8 +33,14 @@ public class CorpSystemController {
     }
 
     @GetMapping("/corp_clients")
-    public String getCorpClients(Model model){
-        model.addAttribute("clients",assistanceListService.findTop31ByOrderByFullname());
+    public String getCorpClients(Model model, @RequestParam(name = "nameFilter",required = false) String name){
+        if(name==null || name==""){
+            model.addAttribute("clients",assistanceListService.findTop31ByOrderByFullname());
+        }else {
+            model.addAttribute("clients",assistanceListService.findTop31ByOrderByFullname());
+        }
+
+
         return "manipulation/clients";
     }
 }

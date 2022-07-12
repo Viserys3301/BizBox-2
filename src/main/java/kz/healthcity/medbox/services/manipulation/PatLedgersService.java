@@ -16,6 +16,12 @@ import java.util.Optional;
 public class PatLedgersService {
     psPatLedgersRepository patLedgersRepository;
 
+    WarehouseService warehouseService;
+
+    @Autowired
+    public void setWarehouseService(WarehouseService warehouseService) {
+        this.warehouseService = warehouseService;
+    }
 
     @Autowired
     public void setPatLedgersRepository(psPatLedgersRepository patLedgersRepository) {
@@ -39,6 +45,10 @@ public class PatLedgersService {
     }
 
     public List<psPatLedgers> findByPatRegisters(Integer patRegisters){
-        return patLedgersRepository.findByPatRegisters(patRegisters);
+        List<psPatLedgers> list = patLedgersRepository.findByPatRegisters(patRegisters);
+
+
+
+        return list;
     }
 }

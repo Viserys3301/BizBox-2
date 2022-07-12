@@ -16,6 +16,14 @@
 </head>
 <body>
 <div th:insert="~{fragments/menu :: menu}"></div>
+
+<form class="form-inline" th:method="get">
+    <input type="text" placeholder="Фамилия, имя" th:value="${param.nameFilter}" name="nameFilter">
+    <button class="button-34" role="button" type="submit">Поиск</button>
+</form>
+
+<h3>&ensp;</h3>
+
 <table class="table">
     <thead>
     <tr>

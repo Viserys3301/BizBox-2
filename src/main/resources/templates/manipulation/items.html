@@ -13,6 +13,7 @@
         }
     </style>
     <style th:insert="~{fragments/menu :: menu_css}"></style>
+    <script src="https://kit.fontawesome.com/aca93a0fac.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -22,15 +23,25 @@
     <thead>
     <tr>
         <th scope="col">ID</th>
-        <th scope="col">Имя</th>
-        <th scope="col">Имя реферала</th>
+        <th scope="col">ID случая</th>
+        <th scope="col">Отделение</th>
+        <th scope="col">Доктор</th>
+        <th scope="col">Услуга</th>
+        <th scope="col">Цена</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="item : ${items}">
         <th scope="row" th:text="${item.primaryKey}"></th>
-        <th scope="row"  th:text="${item.rendate}"></th>
-        <th scope="row"  th:text="${item.amount}"></th>
+        <th scope="row"  th:text="${item.innerId}"></th>
+        <th scope="row"  th:text="${item.branchName}"></th>
+        <th scope="row"  th:text="${item.doctorName}"></th>
+        <th scope="row"  th:text="${item.itemName}"></th>
+        <th scope="row"  th:text="${item.renprice}"></th>
+        <td>
+            <a class="btn btn-secondary" th:href="@{/patient/items/{id} (id = ${item.primaryKey})}" role="button"><i class="fa-solid fa-elevator"></i></a>
+            <a class="btn btn-secondary" th:href="@{/patient/items/{id} (id = ${item.primaryKey})}" role="button"><i class="fa-solid fa-dollar-sign"></i></a>
+        </td>
     </tr>
     </tbody>
 </table>

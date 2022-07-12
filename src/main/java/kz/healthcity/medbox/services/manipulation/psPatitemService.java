@@ -12,6 +12,26 @@ import java.util.*;
 public class psPatitemService {
 
     psPatitemRepository patitemRepository;
+    WarehouseService warehouseService;
+
+    ItemService  itemService;
+
+    DatacenterService datacenterService;
+
+    @Autowired
+    public void setDatacenterService(DatacenterService datacenterService) {
+        this.datacenterService = datacenterService;
+    }
+
+    @Autowired
+    public void setItemService(ItemService itemService) {
+        this.itemService = itemService;
+    }
+
+    @Autowired
+    public void setWarehouseService(WarehouseService warehouseService) {
+        this.warehouseService = warehouseService;
+    }
 
     @Autowired
     public void setPatitemRepository(psPatitemRepository patitemRepository) {
@@ -43,6 +63,15 @@ public class psPatitemService {
     }
 
     public List<psPatitem> findByInnerId(Long id) {
-      return   patitemRepository.findByInnerId(id);
+        List<psPatitem> list = patitemRepository.findByInnerId(id);
+
+        for (int i = 0; i < list.size(); i++) {
+           list.get(i).setBranchName(warehouseService.findDescriptionById(list.get(i).getFK_mscWarehouse()));
+            //   list.get(i).setItemName(warehouseService.findDescriptionById(list.get(i).getFK_mscWarehouse()));
+           list.get(i).setItemName(itemService.findDescriptionById(String.valueOf(list.get(i).getItem())));
+           list.get(i).setDoctorName(datacenterService.findNameById((long)list.get(i).getFK_emdDoctorsREQ()));
+        }
+
+      return   list;
     }
 }

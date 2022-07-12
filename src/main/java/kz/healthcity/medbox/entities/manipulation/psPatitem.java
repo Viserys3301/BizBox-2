@@ -18,7 +18,17 @@ public class psPatitem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PK_psPatitem")
-    private Integer PK_psPatitem;
+    private Integer primaryKey;
+
+
+    @Transient
+    private String branchName;
+
+    @Transient
+    private String doctorName;
+
+    @Transient
+    private String itemName;
 
     @Column(name = "tstamp")
     private Byte[] tstamp;
@@ -51,7 +61,7 @@ public class psPatitem {
     private String FK_iwItemsREQ;
 
     @Column(name = "FK_iwItemsREN")
-    private String FK_iwItemsREN;
+    private String item;
 
     @Column(name = "FK_mscItemCategory")
     private Integer FK_mscItemCategory;

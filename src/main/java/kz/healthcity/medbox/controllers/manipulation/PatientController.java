@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/patient")
@@ -50,8 +51,12 @@ public class PatientController {
 
 
     @GetMapping
-    public String getPatients(Model model){
-        model.addAttribute("patients",datacenterService.findTop31ByOrderByFullname());
+    public String getPatients(Model model, @RequestParam(name = "nameFilter",required = false) String name){
+        if (name == null || name==""){
+            model.addAttribute("patients",datacenterService.findTop31ByOrderByFullname());
+        }else {
+            model.addAttribute("patients",datacenterService.findByFullnameLike(name));
+        }
         return "manipulation/patients";
     }
 

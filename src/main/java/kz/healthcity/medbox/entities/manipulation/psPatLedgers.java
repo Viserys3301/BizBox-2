@@ -19,6 +19,7 @@ public class psPatLedgers {
     @Column(name = "PK_psPatledgers")
     private Long PK_psPatledgers;
 
+
     @Column(name = "tstamp")
     private Byte[] tstamp;
 
