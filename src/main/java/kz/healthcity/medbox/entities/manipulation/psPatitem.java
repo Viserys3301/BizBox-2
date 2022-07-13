@@ -46,7 +46,7 @@ public class psPatitem {
     private Integer patientId;
 
     @Column(name = "FK_emdDoctors")
-    private Integer FK_emdDoctors;
+    private Integer doctorId;
 
     @Column(name = "FK_emdDoctorsREQ")
     private Integer FK_emdDoctorsREQ;

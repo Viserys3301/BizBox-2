@@ -33,14 +33,16 @@ public class CorpSystemController {
     }
 
     @GetMapping("/corp_clients")
-    public String getCorpClients(Model model, @RequestParam(name = "nameFilter",required = false) String name){
-        if(name==null || name==""){
+    public String getCorpClients(Model model, @RequestParam(name = "nameFilter",required = false) Integer id){
+        if(id==null){
             model.addAttribute("clients",assistanceListService.findTop31ByOrderByFullname());
+            model.addAttribute("companies",assistanceClientsService.findAll());
         }else {
-            model.addAttribute("clients",assistanceListService.findTop31ByOrderByFullname());
+            model.addAttribute("clients",assistanceListService.findByCompanyId(id));
+            model.addAttribute("companies",assistanceClientsService.findAll());
         }
-
 
         return "manipulation/clients";
     }
+
 }

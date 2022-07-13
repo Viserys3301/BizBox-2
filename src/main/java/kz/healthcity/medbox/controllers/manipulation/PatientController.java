@@ -99,6 +99,7 @@ public class PatientController {
     @GetMapping("/items/{id}")
     public String getItems(@PathVariable(value = "id") Long id,Model model){
         model.addAttribute("items",patitemService.findByInnerId(id));
+        model.addAttribute("it",patitemService.findByInnerId(id).get(0));
         return "manipulation/items";
     }
 

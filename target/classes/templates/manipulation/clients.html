@@ -17,12 +17,14 @@
 <body>
 <div th:insert="~{fragments/menu :: menu}"></div>
 
-<form class="form-inline" th:method="get">
-    <input type="text" placeholder="Фамилия, имя" th:value="${param.nameFilter}" name="nameFilter">
-    <button class="button-34" role="button" type="submit">Поиск</button>
-</form>
-
 <h3>&ensp;</h3>
+
+<form th:method="get">
+    <select class="classic" th:value="${param.nameFilter}" name="nameFilter" >
+        <option th:each="company : ${companies}" th:value="${company.ID}" th:text="${company.name}" > </option>
+    </select>
+    <button type="submit">Поиск</button>
+</form>
 
 <table class="table">
     <thead>
@@ -35,12 +37,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="client : ${clients}">
-        <th scope="row" th:text="${client.ID}"></th>
-        <th scope="row"  th:text="${client.clientName}"></th>
-        <th scope="row"  th:text="${client.clientRefName}"></th>
-        <th scope="row"  th:text="${client.companyName}"></th>
-        <th scope="row"  th:text="${client.packageName}"></th>
+    <tr th:each="book,client : ${clients}">
+        <th scope="row" th:text="${book.ID}"></th>
+        <th scope="row"  th:text="${book.clientName}"></th>
+        <th scope="row"  th:text="${book.clientRefName}"></th>
+        <th scope="row"  th:text="${book.companyName}"></th>
+        <th scope="row"  th:text="${book.packageName}"></th>
     </tr>
     </tbody>
 </table>

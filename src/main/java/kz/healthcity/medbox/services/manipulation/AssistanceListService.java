@@ -7,6 +7,9 @@ import kz.healthcity.medbox.repositories.manipulation.AssistanceClientsRepositor
 import kz.healthcity.medbox.repositories.manipulation.AssistanceListRepository;
 import kz.healthcity.medbox.repositories.manipulation.DatacenterPatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,6 +26,13 @@ public class AssistanceListService {
     DatacenterService datacenterService;
 
     AssistanceClientsService assistanceClientsService;
+
+    AssistancePackagesService assistancePackagesService;
+
+    @Autowired
+    public void setAssistancePackagesService(AssistancePackagesService assistancePackagesService) {
+        this.assistancePackagesService = assistancePackagesService;
+    }
 
     @Autowired
     public void setAssistanceClientsService(AssistanceClientsService assistanceClientsService) {
@@ -49,28 +59,24 @@ public class AssistanceListService {
         this.assistanceListRepository = assistanceListRepository;
     }
 
-    public List<AssistanceList>  findTop31ByOrderByFullname(){
-        List<AssistanceList> corp_clients =assistanceListRepository.findTop31ByOrderByID();
-        List<AssistanceList> top30 = new ArrayList<>();
+    public Page<AssistanceList>  findTop31ByOrderByFullname(){
+        Page<AssistanceList> corp_clients =  assistanceListRepository.findAll(PageRequest.of(20,10));
+
+
+        return  corp_clients;
+    }
+
+    public List<AssistanceList> findByCompanyId(Integer id){
+
+        List<AssistanceList> corp_clients =  assistanceListRepository.findByCompanyId(id);
+
+
         for (int i = 0; i < corp_clients.size(); i++) {
             corp_clients.get(i).setClientName(datacenterService.findClientNameById((long)corp_clients.get(i).getDatacenter_ID()));
             corp_clients.get(i).setClientRefName(datacenterService.findClientNameById((long)corp_clients.get(i).getDatacenter_REF()));
-            corp_clients.get(i).setCompanyName(assistanceClientsService.findNameById(corp_clients.get(i).getAssistance_clients_ID()));
-            corp_clients.get(i).setPackageName(assistanceClientsService.findNameById(corp_clients.get(i).getAssistance_clients_ID()));
+            corp_clients.get(i).setCompanyName(assistanceClientsService.findNameById(corp_clients.get(i).getCompanyId()));
+            corp_clients.get(i).setPackageName(assistancePackagesService.getNameById(corp_clients.get(i).getAssistance_packages_ID()));
         }
-
-        int x = 0;
-
-        for (int i = 0; i <corp_clients.size() ; i++) {
-            if (x>=20){
-                break;
-            }
-            top30.add(corp_clients.get(i));
-            x++;
-        }
-
-        return  top30;
+            return corp_clients;
     }
-
-
 }

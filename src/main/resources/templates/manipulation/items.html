@@ -27,7 +27,7 @@
         <th scope="col">Отделение</th>
         <th scope="col">Доктор</th>
         <th scope="col">Услуга</th>
-        <th scope="col">Цена</th>
+        <th scope="col">Цена&nbsp;<a class="btn btn-secondary" th:href="@{/patient/update_price/{id} (id = ${it.innerId})}" role="button"><i class="fa-solid fa-dollar-sign"></i></a></th>
     </tr>
     </thead>
     <tbody>
@@ -38,12 +38,6 @@
         <th scope="row"  th:text="${item.doctorName}"></th>
         <th scope="row"  th:text="${item.itemName}"></th>
         <th scope="row"  th:text="${item.renprice}"></th>
-        <td>
-
-            <a class="btn btn-secondary" th:href="@{/update_price/{id} (id = ${item.innerId})}" role="button"><i class="fa-solid fa-elevator"></i></a>
-
-            <a class="btn btn-secondary" th:href="@{/patient/update_price/{id} (id = ${item.innerId})}" role="button"><i class="fa-solid fa-dollar-sign"></i></a>
-        </td>
     </tr>
     </tbody>
 </table>

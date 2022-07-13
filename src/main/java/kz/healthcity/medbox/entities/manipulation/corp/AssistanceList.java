@@ -25,7 +25,7 @@ public class AssistanceList {
     private Integer datacenter_REF;
 
     @Column(name ="Assistance_clients_ID")
-    private Integer Assistance_clients_ID;
+    private Integer companyId;
 
     @Column(name = "Assistance_packages_ID")
     private Integer Assistance_packages_ID;

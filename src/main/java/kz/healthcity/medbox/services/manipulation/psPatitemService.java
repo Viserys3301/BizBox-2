@@ -68,7 +68,6 @@ public class psPatitemService {
 
         for (int i = 0; i < list.size(); i++) {
            list.get(i).setBranchName(warehouseService.findDescriptionById(list.get(i).getFK_mscWarehouse()));
-            //   list.get(i).setItemName(warehouseService.findDescriptionById(list.get(i).getFK_mscWarehouse()));
            list.get(i).setItemName(itemService.findDescriptionById(String.valueOf(list.get(i).getItem())));
            list.get(i).setDoctorName(datacenterService.findNameById((long)list.get(i).getFK_emdDoctorsREQ()));
         }
