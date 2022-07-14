@@ -13,5 +13,5 @@ import java.util.List;
 public interface AssistanceListRepository extends JpaRepository<AssistanceList,Integer> {
 
     List<AssistanceList> findTop31ByOrderByID();
-    List<AssistanceList> findByCompanyId(Integer id);
+    List<AssistanceList> findByCompanyId(Integer id,PageRequest pageRequest);
 }

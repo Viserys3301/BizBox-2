@@ -37,15 +37,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="book,client : ${clients}">
-        <th scope="row" th:text="${book.ID}"></th>
-        <th scope="row"  th:text="${book.clientName}"></th>
-        <th scope="row"  th:text="${book.clientRefName}"></th>
-        <th scope="row"  th:text="${book.companyName}"></th>
-        <th scope="row"  th:text="${book.packageName}"></th>
+    <tr th:each="client : ${clients}">
+        <th scope="row" th:text="${client.ID}"></th>
+        <th scope="row"  th:text="${client.clientName}"></th>
+        <th scope="row"  th:text="${client.clientRefName}"></th>
+        <th scope="row"  th:text="${client.companyName}"></th>
+        <th scope="row"  th:text="${client.packageName}"></th>
     </tr>
     </tbody>
 </table>
+
 
 </body>
 </html>

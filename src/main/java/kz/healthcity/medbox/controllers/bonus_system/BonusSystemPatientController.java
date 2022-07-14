@@ -38,14 +38,14 @@ public class BonusSystemPatientController {
     @GetMapping("/{id}")
     public String getBonusPatientByIdPage(@PathVariable(value = "id") Long id, Model model){
         model.addAttribute("patient",patientService.findById(id));
-        model.addAttribute("discounts",discountService.findAll());
+        model.addAttribute("discounts",discountService.findAllTrue());
         return "bonus-system/patient/patient";
     }
 
     @GetMapping("/new")
     public String getNewBonusPatientPage(Model model){
         model.addAttribute("patient",new Patient());
-        model.addAttribute("discounts",discountService.findAll());
+        model.addAttribute("discounts",discountService.findAllTrue());
         return "bonus-system/patient/patient";
     }
 

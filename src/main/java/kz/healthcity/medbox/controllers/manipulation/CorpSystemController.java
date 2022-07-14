@@ -33,12 +33,17 @@ public class CorpSystemController {
     }
 
     @GetMapping("/corp_clients")
-    public String getCorpClients(Model model, @RequestParam(name = "nameFilter",required = false) Integer id){
+    public String getCorpClients(
+                                Model model
+                                ,@RequestParam(name = "nameFilter",required = false) Integer id
+                                ,@RequestParam(name = "page",required = false) Integer page){
+        if (page==null) page=0;
         if(id==null){
-            model.addAttribute("clients",assistanceListService.findTop31ByOrderByFullname());
+            model.addAttribute("clients",assistanceListService.findTop31ByOrderByFullname(page));
             model.addAttribute("companies",assistanceClientsService.findAll());
+            model.addAttribute("pageNumber",page);
         }else {
-            model.addAttribute("clients",assistanceListService.findByCompanyId(id));
+            model.addAttribute("clients",assistanceListService.findByCompanyId(id,page));
             model.addAttribute("companies",assistanceClientsService.findAll());
         }
 

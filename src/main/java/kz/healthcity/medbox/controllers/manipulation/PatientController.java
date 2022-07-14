@@ -88,13 +88,6 @@ public class PatientController {
         model.addAttribute("ambulatories",patLedgersService.findByPatRegisters(id));
         return "manipulation/ambulatory";
     }
-//
-//    @GetMapping("/items/{id}")
-//    public String getItems(@PathVariable(value = "id") Long id,Model model){
-//        model.addAttribute("items",patinvRepository.findByPrimaryKey(id));
-//        return "manipulation/items";
-//    }
-
 
     @GetMapping("/items/{id}")
     public String getItems(@PathVariable(value = "id") Long id,Model model){

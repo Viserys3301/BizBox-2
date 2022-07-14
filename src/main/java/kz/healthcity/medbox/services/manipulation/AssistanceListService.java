@@ -59,24 +59,31 @@ public class AssistanceListService {
         this.assistanceListRepository = assistanceListRepository;
     }
 
-    public Page<AssistanceList>  findTop31ByOrderByFullname(){
-        Page<AssistanceList> corp_clients =  assistanceListRepository.findAll(PageRequest.of(20,10));
+    public Page<AssistanceList>  findTop31ByOrderByFullname(int page){
+        Page<AssistanceList> corp_clients =  assistanceListRepository.findAll(PageRequest.of(page,20));
 
+        corp_clients.toSet().forEach(a ->{
+            a.setClientName(datacenterService.findClientNameById((long)a.getDatacenter_ID()));
+            a.setClientRefName(datacenterService.findClientNameById((long)a.getDatacenter_REF()));
+            a.setCompanyName(assistanceClientsService.findNameById(a.getCompanyId()));
+            a.setPackageName(assistancePackagesService.getNameById(a.getAssistance_packages_ID()));
+        });
 
-        return  corp_clients;
+        return corp_clients;
     }
 
-    public List<AssistanceList> findByCompanyId(Integer id){
+    public List<AssistanceList> findByCompanyId(Integer id,int page){
 
-        List<AssistanceList> corp_clients =  assistanceListRepository.findByCompanyId(id);
+        List<AssistanceList> corp_clients =  assistanceListRepository.findByCompanyId(id,PageRequest.of(page,20));
+
+        corp_clients.forEach(c ->{
+            c.setClientName(datacenterService.findClientNameById((long)c.getDatacenter_ID()));
+            c.setClientRefName(datacenterService.findClientNameById((long)c.getDatacenter_REF()));
+            c.setCompanyName(assistanceClientsService.findNameById(c.getCompanyId()));
+            c.setPackageName(assistancePackagesService.getNameById(c.getAssistance_packages_ID()));
+        });
 
 
-        for (int i = 0; i < corp_clients.size(); i++) {
-            corp_clients.get(i).setClientName(datacenterService.findClientNameById((long)corp_clients.get(i).getDatacenter_ID()));
-            corp_clients.get(i).setClientRefName(datacenterService.findClientNameById((long)corp_clients.get(i).getDatacenter_REF()));
-            corp_clients.get(i).setCompanyName(assistanceClientsService.findNameById(corp_clients.get(i).getCompanyId()));
-            corp_clients.get(i).setPackageName(assistancePackagesService.getNameById(corp_clients.get(i).getAssistance_packages_ID()));
-        }
-            return corp_clients;
+        return corp_clients;
     }
 }

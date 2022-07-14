@@ -31,16 +31,10 @@ public class DiscountService {
         return discountRepository.findAll();
     }
 
-    @Transactional
-    public void declineBuId(Long id){
-        //TODO реализовать
-    }
 
-    @Transactional
-    public void includeById(Long id){
-        //TODO реализовать
+    public List<Discount> findAllTrue(){
+        return discountRepository.findAllByIsActive(true);
     }
-
 
     public void saveOrUpdate(Discount discount){
         discount.setIsActive(true);
