@@ -36,9 +36,9 @@ public class UserServiceIml implements UserService{
             throw new RuntimeException("password not =");
         }
         MedBoxUser user = MedBoxUser.builder()
-                .login(userDTO.getLogin())
+                .name(userDTO.getUsername())
                 .password(passwordEncoder.encode(userDTO.getPassword()))
-                .role(Role.MANAGER)
+                .role(Role.ADMIN)
                 .build();
         userRepository.save(user);
         return true;
