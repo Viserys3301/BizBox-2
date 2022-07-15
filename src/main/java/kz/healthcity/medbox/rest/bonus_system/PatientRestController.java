@@ -2,7 +2,6 @@ package kz.healthcity.medbox.rest.bonus_system;
 
 import kz.healthcity.medbox.dto.bonus_system.BonusPatientDTO;
 import kz.healthcity.medbox.entities.bonus_system.Patient;
-import kz.healthcity.medbox.exceptions.PatientException;
 import kz.healthcity.medbox.services.bonus_system.PatientService;
 import lombok.SneakyThrows;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
@@ -52,7 +51,7 @@ public class PatientRestController {
             patientService.saveOrUpdate(patient);
             return patient;
         }
-        throw new PatientException();
+        throw new RuntimeException();
     }
 
 }

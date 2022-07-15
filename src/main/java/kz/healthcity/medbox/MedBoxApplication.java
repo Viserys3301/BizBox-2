@@ -1,5 +1,7 @@
 package kz.healthcity.medbox;
 
+import kz.healthcity.medbox.services.bonus_system.FindNewBonusPatientService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -10,10 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class MedBoxApplication {
 
     public static void main(String[] args) {
-        //SpringApplication.run(MedBoxApplication.class, args);
-        ConfigurableApplicationContext context = SpringApplication.run(MedBoxApplication.class, args);
-        PasswordEncoder encoder = context.getBean(PasswordEncoder.class);
-        System.out.println(encoder.encode("Zxcv1234"));
+        SpringApplication.run(MedBoxApplication.class, args);
+
     }
 
 }

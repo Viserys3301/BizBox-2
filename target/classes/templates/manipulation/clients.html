@@ -10,6 +10,11 @@
         }
         .headerText{
             text-align: center;
+
+        }
+        .form-select{
+            display: inline;
+            width: 80%;
         }
     </style>
     <style th:insert="~{fragments/menu :: menu_css}"></style>
@@ -19,11 +24,11 @@
 
 <h3>&ensp;</h3>
 
-<form th:method="get">
-    <select class="classic" th:value="${param.nameFilter}" name="nameFilter" >
+<form th:method="get" >
+    <select th:value="${param.nameFilter}" name="nameFilter" class="form-select" aria-label="Default select example">
         <option th:each="company : ${companies}" th:value="${company.ID}" th:text="${company.name}" > </option>
     </select>
-    <button type="submit">Поиск</button>
+    <button type="submit" class="btn btn-warning">Поиск</button>
 </form>
 
 <table class="table">

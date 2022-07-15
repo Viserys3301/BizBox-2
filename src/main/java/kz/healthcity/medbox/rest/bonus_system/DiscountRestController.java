@@ -2,12 +2,10 @@ package kz.healthcity.medbox.rest.bonus_system;
 
 import kz.healthcity.medbox.dto.bonus_system.BonusDiscountDTO;
 import kz.healthcity.medbox.entities.bonus_system.Discount;
-import kz.healthcity.medbox.exceptions.DiscountException;
 import kz.healthcity.medbox.services.bonus_system.DiscountService;
 import lombok.SneakyThrows;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
